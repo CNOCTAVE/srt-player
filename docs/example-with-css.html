@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- srt-player - play srt file in browser.
+Copyright (C) 2024-2025  Yu Hongbo, CNOCTAVE
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>. -->
+<html>
+<head>
+    <title>SRT Player 示例</title>
+    <script src="srt-player.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+    <link href="srt-player.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>SRT Player 演示</h1>
+    <div class="controls">
+        <button id="playBtn">播放</button>
+        <button id="pauseBtn">暂停</button>
+        <button id="resumeBtn">继续</button>
+        <button id="setTimeSecond">设置为20秒</button>
+    </div>
+
+    <script>
+        const srtText = `1
+00:00:01,000 --> 00:00:04,000
+这是第一句字幕，
+显示在视频的第1秒到第4秒。
+ 
+2
+00:00:05,500 --> 00:00:08,200
+字幕可以换行（第1行），
+（第2行）。
+ 
+3
+00:00:09,000 --> 00:00:12,000
+字幕支持HTML标签，例如：<i>斜体</i> 或 <b>加粗</b>。
+ 
+ 
+4
+00:00:13,000 --> 00:00:16,500
+字幕块之间可以有多行空白，
+这块和上一块之间有2行空白。
+        `;
+
+        const player = SrtPlayer.init(srtText);
+        
+        // 歌词变化回调
+        player.onLyricChange = (text, line) => {
+            console.log('当前歌词:', text);
+        };
+
+        document.getElementById('playBtn').addEventListener('click', () => {
+            player.play();
+        });
+        
+        document.getElementById('pauseBtn').addEventListener('click', () => {
+            player.pause();
+        });
+        
+        document.getElementById('resumeBtn').addEventListener('click', () => {
+            player.resume();
+        });
+        
+        document.getElementById('setTimeSecond').addEventListener('click', () => {
+            player.setTimeSecond(10);
+        });
+    </script>
+</body>
+</html>

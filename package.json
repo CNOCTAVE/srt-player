@@ -1,0 +1,26 @@
+{
+  "name": "srt-player",
+  "version": "0.1.0",
+  "description": "play srt file in browser",
+  "main": "srt-player.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CNOCTAVE/srt-player.git"
+  },
+  "keywords": [
+    "SRT",
+    "player"
+  ],
+  "author": "CNOCTAVE, Yu Hongbo",
+  "license": "AGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/CNOCTAVE/srt-player/issues"
+  },
+  "homepage": "https://github.com/CNOCTAVE/srt-player#readme"
+}
